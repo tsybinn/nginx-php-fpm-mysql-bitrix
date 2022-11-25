@@ -26,7 +26,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
         composer
 
 #  Install APCu and APC backward compatibility
- RUN pecl install channel://pecl.php.net/APCu-5.1.22 \
+ RUN pecl install channel://pecl.php.net/APCu-5.1.21 \
      && pecl install apcu_bc-1.0.3 \
      && docker-php-ext-enable apcu --ini-name 10-docker-php-ext-apcu.ini \
      && docker-php-ext-enable apc --ini-name 20-docker-php-ext-apc.ini
