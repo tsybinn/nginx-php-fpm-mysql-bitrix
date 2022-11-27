@@ -2,14 +2,14 @@
 
 namespace App\HighloadBlock\Client;
 
-class ClientTaskEoTable extends  \Bitrix\Main\Entity\DataManager
+class ClientTaskEoTable extends \Bitrix\Main\Entity\DataManager
 {
-    public static function getTableName()
+    public static function getTableName(): string
     {
         return 'px_task';
     }
 
-    public static function getMap()
+    public static function getMap(): array
     {
 
         $arMap = [

@@ -4,12 +4,12 @@ namespace App\HighloadBlock\Client;
 
 class ClientEoTable extends \Bitrix\Main\Entity\DataManager
 {
-    public static function getTableName()
+    public static function getTableName(): string
     {
         return 'px_client';
     }
 
-    public static function getMap()
+    public static function getMap(): array
     {
         $arMap = [
             'ID' => [
@@ -62,13 +62,5 @@ class ClientEoTable extends \Bitrix\Main\Entity\DataManager
 
         }
 
-    }
-
-    public static function getIdAll(): array
-    {
-        return ClientEoTable::query()
-            ->setSelect(['*'])
-            ->exec()
-            ->fetchAll();
     }
 }

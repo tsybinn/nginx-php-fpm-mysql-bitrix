@@ -26,9 +26,6 @@ class TaskClientComponent extends \CBitrixComponent
         return parent::onPrepareComponentParams($arParams);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function executeComponent()
     {
         $this->initPageNavigation();

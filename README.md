@@ -19,7 +19,7 @@
 - `cat docker/build/mysql/px.sql | docker exec -i mysql /usr/bin/mysql -u bitrix --password=password bitrix`
 
  настроки бд
-- ip mysql  `docker inspect mysql | grep "IPAddress"` <b>172.16.1.15></b>
+- ip mysql <b>172.16.1.15</b>
 - Вход в контейнер `docker exec -it mysql bash"`
 - MYSQL_USER=bitrix
 - MYSQL_PASSWORD=password
@@ -27,7 +27,7 @@
 - MYSQL_ROOT_USER=root
 - MYSQL_ROOT_PASSWORD**=root
 <hr>
-
+в дерикторию /var/www/public
  Установить 1С-Битрикс: Управление сайтом
 <hr>
 **MAIL**

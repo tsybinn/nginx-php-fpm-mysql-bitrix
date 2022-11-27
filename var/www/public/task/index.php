@@ -9,7 +9,7 @@ $APPLICATION->IncludeComponent(
 		"COMPONENT_TEMPLATE" => ".default",
 		"CACHE_TYPE" => "A",
 		"CACHE_TIME" => "3600",
-		"ELEMENT_COUNT" => "20"
+		"ELEMENT_COUNT" => "10"
 	),
 	$component
 );
