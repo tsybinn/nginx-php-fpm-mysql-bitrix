@@ -73,7 +73,7 @@ class TaskClientComponent extends \CBitrixComponent
         $obCache = new CPHPCache();
         $cacheId = $this->arParams['ELEMENT_COUNT'] . $this->obNavigation->getCurrentPage();
         // кеширование
-        if ($obCache->InitCache(24 * 60 * 60, $cacheId, SITE_ID . '/task/')) {
+        if ($obCache->InitCache($this->arParams['CACHE_TIME'], $cacheId, SITE_ID . '/task/')) {
             $this->arResult = $obCache->GetVars();
             $this->obNavigation->setRecordCount($this->arResult['COUNT']);
         } elseif ($obCache->startDataCache()) {

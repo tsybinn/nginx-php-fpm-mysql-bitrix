@@ -14,5 +14,4 @@ $APPLICATION->IncludeComponent(
 	$component
 );
 
-
 ?>
