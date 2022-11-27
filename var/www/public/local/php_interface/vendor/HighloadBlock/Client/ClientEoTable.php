@@ -4,23 +4,10 @@ namespace App\HighloadBlock\Client;
 
 class ClientEoTable extends \Bitrix\Main\Entity\DataManager
 {
-    // use \Opt\Main\Cache;
-    // use \Opt\Main\Orm;
-
     public static function getTableName()
     {
         return 'px_client';
     }
-
-    // public static function getObjectClass()
-    // {
-    //     return \Opt\HighloadBlock\Client\ClientEo::class;
-    // }
-    //
-    // public static function getCollectionClass()
-    // {
-    //     return \Opt\HighloadBlock\Client\ClientEoCollection::class;
-    // }
 
     public static function getMap()
     {
@@ -38,14 +25,8 @@ class ClientEoTable extends \Bitrix\Main\Entity\DataManager
         return $arMap;
     }
 
-    public static function getObjectClass()
+    public static function AddClientTask(int $count): void
     {
-        return \App\HighloadBlock\Client\ClientEo::class;
-    }
-
-    public static function AddClientTask($count): void
-    {
-        static $isName;
         set_time_limit(0);
         for ($i = 0; $i < $count; $i++) {
             echo $i;
@@ -57,10 +38,9 @@ class ClientEoTable extends \Bitrix\Main\Entity\DataManager
                     ->setLimit(1)
                     ->exec()
                     ->fetch();
-                $name = 'test_'. ++$lastIdClient['ID'];
-            }
-            else{
-                $name = 'test_' .++$id;
+                $name = 'test_' . ++$lastIdClient['ID'];
+            } else {
+                $name = 'test_' . ++$id;
             }
 
             $res = ClientEoTable::add(['NAME' => $name]);
@@ -71,10 +51,14 @@ class ClientEoTable extends \Bitrix\Main\Entity\DataManager
                 if ($x < 250) {
                     $status = 1;
                 }
-                $status = $arField = ['NAME' =>  substr(md5(time()), 0, 6), 'PRICE' => 1, 'CLIENT_ID' => $id, 'STATUS_ID' => $status];
-                \App\HighloadBlock\Client\ClientTaskEoTable::add($arField);
 
+                $nameTask = bin2hex(random_bytes(10));;
+
+                $arFieldList = ['NAME' => $nameTask, 'PRICE' => 1, 'CLIENT_ID' => $id, 'STATUS_ID' => $status];
+                \App\HighloadBlock\Client\ClientTaskEoTable::add($arFieldList);
             }
+            // медленнее
+            // \App\HighloadBlock\Client\ClientTaskEoTable::addMulti($arFieldList);
 
         }
 
