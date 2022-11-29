@@ -3,18 +3,22 @@ version: '3.4'
 services:
   nginx:
     container_name: nginx
-    build: ./docker/build/nginx
+    build:
+      context: ./docker/build/nginx
+      dockerfile: Dockerfile
+      args:
+        DIR_SITE_CONTAINER: $DIR_SITE_CONTAINER
     ports:
       - 80:80
     volumes:
-      - ./var/www:/usr/share/nginx/html
+      - $DIR_SITE_LOCAL:$DIR_SITE_CONTAINER
     depends_on:
       - php
     restart:
       always
     networks:
       default:
-        ipv4_address: 172.16.1.4
+        ipv4_address: $IP_NGINX
 
   mysql:
     container_name: mysql
@@ -31,12 +35,12 @@ services:
       - '3310:3310'
     networks:
       default:
-        ipv4_address: 172.16.1.15
+        ipv4_address: ${IP_MYSQL}
   php:
     container_name: php-fpm
     build: docker/build/php-fpm
     volumes:
-      - ./var/www:/usr/share/nginx/html
+      - ${DIR_SITE_LOCAL}:${DIR_SITE_CONTAINER}
       - ./docker/build/php-fpm/hosts:/etc/hosts
       - ./var/mail:/var/mail
     networks:

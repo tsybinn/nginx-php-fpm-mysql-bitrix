@@ -38,5 +38,5 @@ ADD php.ini /usr/local/etc/php/conf.d/php.ini
 
 ADD fake_sendmail.sh /usr/bin/fake_sendmail.sh
 
-RUN chmod 777 /usr/bin/fake_sendmail.sh
-RUN chmod  777  /var/mail
+RUN chmod -R 777 /usr/bin/fake_sendmail.sh
+RUN chmod -R 777  /var/mail
