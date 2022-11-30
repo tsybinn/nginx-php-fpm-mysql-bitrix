@@ -3,7 +3,7 @@
   "description": "server test",
   "autoload": {
     "psr-4": {
-      "App\\": "../local/php_interface/vendor/"
+      "App\\": "../src/App"
     }
   },
   "authors": [
